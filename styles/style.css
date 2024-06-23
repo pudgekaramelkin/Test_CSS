@@ -1,0 +1,100 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: 100vh;
+  background-color: #333;
+}
+
+.checklist-container {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px 15px 22px;
+  border-radius: 10px;
+  background-color: #3579f5;
+  color: white;
+}
+
+@property --progress-value {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes progress {
+  to {
+    --progress-value: 33;
+  }
+}
+
+.progress-bar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 60px;
+  block-size: 60px;
+  margin-inline-end: 16px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #3579f5 89%, transparent 90% 100%),
+    conic-gradient(white calc(var(--progress-value) * 1%), transparent 0);
+  animation: progress 2s 1 forwards;
+}
+
+.progress-bar::after {
+  content: attr(data-progress);
+  position: absolute;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  margin-inline-end: 68px;
+}
+
+.content__title {
+  inline-size: 76px;
+  padding: 0 13px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 40px;
+  background-color: #2364db;
+}
+
+.content__subdescription {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.button {
+  align-self: flex-start;
+  background-color: white;
+  color: #4777ed;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  transition: color 0.35s;
+}
+
+.button:hover {
+  background-color: #306dcf;
+  color: white;
+}
+
+.button__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
